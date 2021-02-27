@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SensorToolkit-Server</string>
+
+    <string name="TurnOnSwitch">Start</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+</resources>
