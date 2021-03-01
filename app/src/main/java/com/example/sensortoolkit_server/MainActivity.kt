@@ -14,8 +14,9 @@ import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.concurrent.thread
 
 val response  = ("HTTP/1.1 200 OK\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Hello   World!</h1> </body> </html>""").toByteArray()
-val InternalServerError = "HTTP/1.1 500 Internal Server Error\r\n" + "Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Something went wrong</h1> </body> </html>"""
-val BarRequestErr = "HTTP/1.1 400 Bad Request\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Bad Request</h1> </body> </html>"""
+val InternalServerError = ("HTTP/1.1 500 Internal Server Error\r\n" + "Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Something went wrong</h1> </body> </html>""").toByteArray()
+val BadRequestErr = ("HTTP/1.1 400 Bad Request\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Bad Request</h1> </body> </html>""").toByteArray()
+val NotFoundErr = ("HTTP/1.1 404 NOT FOUND\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Bad Request</h1> </body> </html>""").toByteArray()
 
 class MainActivity : AppCompatActivity() {
 
@@ -73,8 +74,14 @@ class MainActivity : AppCompatActivity() {
             // Log.e("output",data.toArray().toString())
             val outputStream = socket.getOutputStream()
 
-            if (!(req.size>=3)){ outputStream.write(BarRequestErr.toByteArray()) ; continue  }
+            if (req.size!=3){ outputStream.write(BadRequestErr) ; continue  }
 
+            val uri = req[1]
+
+            when(uri){
+                "sensor" -> print("hello")
+                else -> outputStream.write(NotFoundErr)
+            }
 
 
 
