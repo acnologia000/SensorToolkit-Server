@@ -74,12 +74,18 @@ class MainActivity : AppCompatActivity() {
             // Log.e("output",data.toArray().toString())
             val outputStream = socket.getOutputStream()
 
+            // early return in case of bad http request
             if (req.size!=3){ outputStream.write(BadRequestErr) ; continue  }
 
-            val uri = req[1]
-
-            when(uri){
-                "sensor" -> print("hello")
+            // dispatching requests to mapped routes
+            // req[1] being the middle of the top line
+            // of http request that contains requested URI
+            // each string pattern/route corresponds to
+            // designated sensor by name and "/" or home responds
+            // to collection of data by all the standard sensors
+            when(req[1]){
+                "/"-> {} // respond with data of all the sensors
+                "/<name of sensor>" -> print("hello") // something like Outputstread.write(<sensor data json>)
                 else -> outputStream.write(NotFoundErr)
             }
 
