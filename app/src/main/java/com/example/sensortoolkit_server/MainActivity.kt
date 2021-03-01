@@ -13,9 +13,9 @@ import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.concurrent.thread
 
-const val response  = "HTTP/1.1 200 OK\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Hello   World!</h1> </body> </html>"""
-
-const val InternalServerError = "HTTP/1.1 500 Internal Server Error\r\n"
+val response  = ("HTTP/1.1 200 OK\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Hello   World!</h1> </body> </html>""").toByteArray()
+val InternalServerError = "HTTP/1.1 500 Internal Server Error\r\n" + "Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Something went wrong</h1> </body> </html>"""
+val BarRequestErr = "HTTP/1.1 400 Bad Request\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Bad Request</h1> </body> </html>"""
 
 class MainActivity : AppCompatActivity() {
 
@@ -73,13 +73,13 @@ class MainActivity : AppCompatActivity() {
             // Log.e("output",data.toArray().toString())
             val outputStream = socket.getOutputStream()
 
-            if (!(req.size>=3)){ outputStream.write("".toByteArray()) ; continue  }
+            if (!(req.size>=3)){ outputStream.write(BarRequestErr.toByteArray()) ; continue  }
 
 
 
 
             Log.e("writing","writing the output")
-            outputStream.write(response.toByteArray())
+            outputStream.write(response)
 
             Log.e("closing","closing output stream")
             outputStream.flush()
