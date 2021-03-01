@@ -1,26 +1,21 @@
 package com.example.sensortoolkit_server
 
 
+import android.hardware.Sensor
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sensortoolkit_server.databinding.ActivityMainBinding
-import java.io.BufferedInputStream
-import java.io.InputStreamReader
 import java.net.Inet4Address
 import java.net.ServerSocket
+import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.concurrent.thread
 
-const val response  = "HTTP/1.1 200 OK\r\n"+"Content-Type: text/html\r\n\n"+"""<html>
-<body>
-<h1>
-Hello, World!
+const val response  = "HTTP/1.1 200 OK\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Hello   World!</h1> </body> </html>"""
 
-
-</h1>
-</body>
-</html>"""
+const val InternalServerError = "HTTP/1.1 500 Internal Server Error\r\n"
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,14 +66,16 @@ class MainActivity : AppCompatActivity() {
             Log.e("reading","reading all data as text")
             // code stuck here
 
-            inputStream.mark(inputStream.available())
 
-            val sc  = InputStreamReader(BufferedInputStream(inputStream)).readText()
-            Log.e("e",sc)
 
+            val req = Scanner(inputStream).nextLine().split(" ").toTypedArray()
 
             // Log.e("output",data.toArray().toString())
             val outputStream = socket.getOutputStream()
+
+            if (!(req.size>=3)){ outputStream.write("".toByteArray()) ; continue  }
+
+
 
 
             Log.e("writing","writing the output")
@@ -94,5 +91,17 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+}
+
+class SensorData{
+    private lateinit var Accelerometer:Sensor
+    private lateinit var AccelerometerLinear:Sensor
+    private lateinit var GyroScope:Sensor
+
+    private lateinit var AccelerometerManager:SensorManager
+    private lateinit var AccelerometerLinearManager:SensorManager
+    private lateinit var GyroscopeManager:SensorManager
+
+
 }
 
