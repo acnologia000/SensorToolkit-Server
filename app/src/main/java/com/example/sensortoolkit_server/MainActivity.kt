@@ -1,8 +1,12 @@
 package com.example.sensortoolkit_server
 
+import android.content.Context
+import android.hardware.Sensor
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.getSystemService
 import com.example.sensortoolkit_server.databinding.ActivityMainBinding
 import java.net.Inet4Address
 import java.net.ServerSocket
@@ -55,6 +59,9 @@ class MainActivity : AppCompatActivity() {
         println("listening to socket")
 
         runOnUiThread{binding.tvmain.text = "listening to socket"}
+
+        val sm = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        var sbunch = SensorBunchObject(sm)
         while(true){
             Log.e("dbg","waiting to accept connection")
 
