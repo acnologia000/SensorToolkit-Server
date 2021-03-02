@@ -25,9 +25,6 @@ class SensorBunchObject{
         this.RotationVector = sm.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
     }
 
-    fun rSelf(): String {
-        return Json.encodeToString(this)
-    }
 }
 @Keep
 @Serializable
