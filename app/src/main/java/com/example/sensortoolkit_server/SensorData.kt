@@ -2,8 +2,13 @@ package com.example.sensortoolkit_server
 
 import android.hardware.Sensor
 import android.hardware.SensorManager
+import androidx.annotation.Keep
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
-class SensorData{
+
+class SensorBunchObject{
 
     private var Accelerometer: Sensor
     private var AccelerometerLinear: Sensor
@@ -19,4 +24,14 @@ class SensorData{
         this.GyroScope = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
         this.RotationVector = sm.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
     }
+
+    fun rSelf(): String {
+        return Json.encodeToString(this)
+    }
 }
+@Keep
+@Serializable
+data class AllSensorData(val Accelerometer:String)
+
+@Serializable
+data class Accelerometer(val x:Int, val y:Int, val z:Int)

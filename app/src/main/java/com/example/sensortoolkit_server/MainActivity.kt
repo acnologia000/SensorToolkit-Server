@@ -13,6 +13,7 @@ import kotlin.concurrent.thread
 //TODO: delete default response and replace with sending data of standard sensors
 //TODO: remove all logging actions
 
+
 val response  = ("HTTP/1.1 200 OK\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Hello   World!</h1> </body> </html>""").toByteArray()
 val InternalServerError = ("HTTP/1.1 500 Internal Server Error\r\n" + "Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Something went wrong</h1> </body> </html>""").toByteArray()
 val BadRequestErr = ("HTTP/1.1 400 Bad Request\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Bad Request</h1> </body> </html>""").toByteArray()
