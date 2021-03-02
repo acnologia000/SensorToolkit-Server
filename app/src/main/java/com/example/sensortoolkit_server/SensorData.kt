@@ -28,7 +28,7 @@ class SensorBunchObject{
 }
 @Keep
 @Serializable
-data class AllSensorData(val Accelerometer:String)
+data class AllSensorData(val Name:String, val axis: Axis)
 
 @Serializable
-data class Accelerometer(val x:Int, val y:Int, val z:Int)
+data class Axis(val x:Int, val y:Int, val z:Int)
