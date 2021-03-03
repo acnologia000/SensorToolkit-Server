@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.btStart.setOnClickListener {
 
             switch.set(true)
@@ -58,10 +57,10 @@ class MainActivity : AppCompatActivity() {
         val server = ServerSocket(4000,1000, Inet4Address.getByName("0.0.0.0"))
         println("listening to socket")
 
-        runOnUiThread{binding.tvmain.text = "listening to socket"}
+        runOnUiThread{binding.tvmain.text = getString(R.string.running)}
 
-        val sm = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        var sbunch = SensorBunchObject(sm)
+
+
         while(true){
             Log.e("dbg","waiting to accept connection")
 
