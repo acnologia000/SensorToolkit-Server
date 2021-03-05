@@ -1,14 +1,14 @@
-package com.example.sensortoolkit_server
-
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.widget.Toast
+import com.example.sensortoolkit_server.Axis
+import com.example.sensortoolkit_server.GyroScopeContainer
+import com.example.sensortoolkit_server.ThreeAxisWithAccuracy
 
-//
-class AccelerometerAdapter():SensorEventListener {
+class LinearAccelerometerAdapter(): SensorEventListener {
     lateinit var sensorManager: SensorManager
     private var sensor: Sensor?=null
     private var tost = { _:String->}
@@ -16,7 +16,7 @@ class AccelerometerAdapter():SensorEventListener {
     private var accuracy = 0
     constructor(ctx: Context) : this() {
         sensorManager = ctx.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION)
 
         sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST)
 
@@ -41,4 +41,3 @@ class AccelerometerAdapter():SensorEventListener {
 
     fun kill() {return sensorManager.unregisterListener(this)}
 }
-
