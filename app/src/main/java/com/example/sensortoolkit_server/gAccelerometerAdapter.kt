@@ -7,18 +7,20 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.widget.Toast
 
+// Just Gravity along different Axis
+
 class gAccelerometerAdapter():SensorEventListener {
-    lateinit var sensorManager: SensorManager
+
+    private lateinit var sensorManager: SensorManager
     private var sensor: Sensor?=null
+    private var accuracy = 0
     private var tost = { _:String->}
     var data :FloatArray = FloatArray(3)
-    private var accuracy = 0
+
     constructor(ctx: Context) : this() {
         sensorManager = ctx.getSystemService(Context.SENSOR_SERVICE) as SensorManager
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY)
-
         sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST)
-
         tost = {input:String -> Toast.makeText( ctx, input, Toast.LENGTH_SHORT).show()}
     }
 

@@ -7,7 +7,8 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.widget.Toast
 
-//
+// Acceleration (including gravity)
+
 class AccelerometerAdapter():SensorEventListener {
     lateinit var sensorManager: SensorManager
     private var sensor: Sensor?=null
@@ -17,9 +18,7 @@ class AccelerometerAdapter():SensorEventListener {
     constructor(ctx: Context) : this() {
         sensorManager = ctx.getSystemService(Context.SENSOR_SERVICE) as SensorManager
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-
         sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST)
-
         tost = {input:String -> Toast.makeText( ctx, input, Toast.LENGTH_SHORT).show()}
     }
 
@@ -28,6 +27,7 @@ class AccelerometerAdapter():SensorEventListener {
             data = p0.values
             p0.accuracy
         }
+
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
@@ -38,6 +38,7 @@ class AccelerometerAdapter():SensorEventListener {
     fun read(): GyroScopeContainer {
         return GyroScopeContainer(ThreeAxisWithAccuracy(Axis(data[0],data[1],data[2]),accuracy))
     }
+
 
     fun kill() {return sensorManager.unregisterListener(this)}
 }

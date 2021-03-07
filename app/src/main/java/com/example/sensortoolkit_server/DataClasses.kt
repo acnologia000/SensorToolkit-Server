@@ -21,4 +21,4 @@ data class GyroScopeContainer(val axis: ThreeAxisWithAccuracy, val Name:String="
 
 @Keep
 @Serializable
-data class RotationVector(val axis: ThreeAxisWithAccuracy,val Name:String="Accelerometer")
+data class RotationVectorContainer(val axis: ThreeAxisWithAccuracy,val Name:String="Accelerometer")
