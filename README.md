@@ -43,7 +43,7 @@ Version 3:
 Version 4:
 
 you can suggest some via opening issues or dropping a dm on my twitter/instagram 
-(they have same handle [see that in my github profile])  
+(they have same handle [see that in my github profile]) 
 
 # Panned micro conrollers / SBC  to support 
 - ESP8266
@@ -51,3 +51,4 @@ you can suggest some via opening issues or dropping a dm on my twitter/instagram
 - ESP32 S2
 - Arduino Wireless capable boards
 - Raspberry Pi (All except pico)
+- Basically anything that can send http request and process it 
