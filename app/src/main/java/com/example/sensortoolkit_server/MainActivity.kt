@@ -17,10 +17,10 @@ import kotlin.concurrent.thread
 
 /*
  * Sensors Done are as follows with files
- * LinearAccelerometer ( accelerometer what people usually expect
- * Accelerometer ( accelerometer data with gravitation constant with whatever axis experiencing it )
- * Rotation Vector ( device orientation in 3D space, yet to make sense of it )( gyroscope in short )
- * gAccelerometer ( acceleration of gravitational constant reading in different axis of the device )
+ * #LinearAccelerometer ( accelerometer what people usually expect
+ * #Accelerometer ( accelerometer data with gravitation constant with whatever axis experiencing it )
+ * #Rotation Vector ( device orientation in 3D space, yet to make sense of it )( gyroscope in short )
+ * #gAccelerometer ( acceleration of gravitational constant reading in different axis of the device )
  *
  * Features remaining :
  * GPS
@@ -29,7 +29,7 @@ import kotlin.concurrent.thread
  */
 
 val response  = ("HTTP/1.1 200 OK\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Hello   World!</h1> </body> </html>""").toByteArray()
-val InternalServerError = ("HTTP/1.1 500 Internal Server Error\r\n" + "Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Something went wrong</h1> </body> </html>""").toByteArray()
+//val InternalServerError = ("HTTP/1.1 500 Internal Server Error\r\n" + "Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Something went wrong</h1> </body> </html>""").toByteArray()
 val BadRequestErr = ("HTTP/1.1 400 Bad Request\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Bad Request</h1> </body> </html>""").toByteArray()
 val NotFoundErr = ("HTTP/1.1 404 NOT FOUND\r\n"+"Content-Type: text/html\r\n\n"+"""<html> <body> <h1>Bad Request</h1> </body> </html>""").toByteArray()
 
@@ -47,9 +47,11 @@ class MainActivity : AppCompatActivity() {
 
             switch.set(true)
             Log.e("dbg","button click received")
+
+            val handle = Sensors(this)
             thread {
                 Log.e("start","server")
-                server(switch)
+                server(switch,handle)
             }
 
             binding.btStart.isEnabled = false
@@ -62,15 +64,12 @@ class MainActivity : AppCompatActivity() {
             binding.buttonStop.isEnabled = false
         }
     }
-    private fun server(switchStatus:AtomicBoolean){
+    private fun server(switchStatus:AtomicBoolean,handle:Sensors){
         Log.e("dbg","inside sever function and proceeding to bind")
         val server = ServerSocket(4000,1000, Inet4Address.getByName("0.0.0.0"))
         println("listening to socket")
 
         runOnUiThread{binding.tvmain.text = getString(R.string.running)}
-
-
-
 
         while(true){
             Log.e("dbg","waiting to accept connection")

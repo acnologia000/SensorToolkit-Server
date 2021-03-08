@@ -17,8 +17,12 @@ data class AccelerometerContainer( val axis: ThreeAxisWithAccuracy, val Name:Str
 
 @Keep
 @Serializable
-data class GyroScopeContainer(val axis: ThreeAxisWithAccuracy, val Name:String="Accelerometer")
+data class GyroScopeContainer(val axis: ThreeAxisWithAccuracy, val Name:String="Gyroscope")
 
 @Keep
 @Serializable
-data class RotationVectorContainer(val axis: ThreeAxisWithAccuracy,val Name:String="Accelerometer")
+data class RotationVectorContainer(val axis: ThreeAxisWithAccuracy,val Name:String="RotationVector")
+
+@Keep
+@Serializable
+data class AllSensors(val LinearAccelerometer:AccelerometerContainer)

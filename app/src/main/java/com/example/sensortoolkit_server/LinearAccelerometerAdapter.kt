@@ -1,3 +1,5 @@
+package com.example.sensortoolkit_server
+
 import android.app.Activity
 import android.content.Context
 import android.hardware.Sensor
@@ -5,12 +7,9 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.widget.Toast
-import com.example.sensortoolkit_server.AccelerometerContainer
-import com.example.sensortoolkit_server.Axis
-import com.example.sensortoolkit_server.GyroScopeContainer
-import com.example.sensortoolkit_server.ThreeAxisWithAccuracy
 
 // acceleration excluding gravity
+
 class LinearAccelerometerAdapter(): Activity(), SensorEventListener {
     lateinit var sensorManager: SensorManager
     private var sensor: Sensor?=null
