@@ -1,6 +1,7 @@
 # SensorToolkit-Server
-a HTTP rest api server for serving sensor data to micro controller boards with wireless capability 
-or rather any device that can make http call, parse/deserialise json and use sensor data
+A HTTP(not exactly HTTP but a custom http like protocol) rest api server for serving sensor 
+data to micro controller boards with wireless capability or rather any device that can make
+http call, parse/deserialise json and use sensor data
 
 
 # Status
@@ -15,9 +16,34 @@ inputs/feataures include but not limited to
 - Gyroscope
 - Gps
 - Sending SMS
-- Using smartphone as Bluetooth relay( in far future )
-- Off device processing (through Lua)( in far future )
+- Getting notification from micro controller 
+- Basic Remote Control protocal(WiFi)( in future ) 
+- Using smartphone as Bluetooth relay( in future )
+- Off device processing (through Lua)( in future )
 
+# Planned Features by version 
+Apha:
+- Accelerometers
+- Gyroscope (Rotation Vector)
+
+Beta:
+- GPS
+- SMS
+
+Stable:
+- Getting Notifications
+
+Version 2:
+- Basic Remote Protocol
+
+Version 3:
+- Bluetooth Connectivity 
+- Off Device Processing
+
+Version 4:
+
+you can suggest some via opening issues or dropping a dm on my twitter/instagram 
+(they have same handle [see that in my github profile])  
 
 # Panned micro conrollers / SBC  to support 
 - ESP8266
