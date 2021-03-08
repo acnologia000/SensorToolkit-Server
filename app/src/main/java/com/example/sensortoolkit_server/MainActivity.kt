@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             // TODO: Impliment full routing system with raw + json outputs
             when(req[1]){
                 "/"-> {} // respond with data of all the sensors
-                "/<name of sensor>" -> print("hello") // something like Outputstread.write(<sensor data json>)
+                "/<name of sensor>" -> print("hello") // something like Outputstream.write(<sensor data json>)
                 else -> outputStream.write(NotFoundErr)
             }
 
