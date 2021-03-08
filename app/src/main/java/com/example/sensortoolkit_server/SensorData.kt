@@ -10,9 +10,9 @@ import kotlinx.serialization.json.Json
 
 
 class SensorBunchObject() {
-    private lateinit var gyro:GyroscopeAdapter
+    private lateinit var gyro:RotationVectorAdapter
 
     constructor(context: Context):this(){
-        gyro = GyroscopeAdapter(context)
+        gyro = RotationVectorAdapter(context)
     }
 }

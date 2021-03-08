@@ -5,6 +5,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.widget.Toast
+import com.example.sensortoolkit_server.AccelerometerContainer
 import com.example.sensortoolkit_server.Axis
 import com.example.sensortoolkit_server.GyroScopeContainer
 import com.example.sensortoolkit_server.ThreeAxisWithAccuracy
@@ -36,8 +37,10 @@ class LinearAccelerometerAdapter(): Activity(), SensorEventListener {
         tost.invoke("sensor accuracy changed \n new value is $p1 ")
     }
 
-    fun read(): GyroScopeContainer {
-        return GyroScopeContainer(ThreeAxisWithAccuracy(Axis(data[0],data[1],data[2]),accuracy))
+    fun readRaw():FloatArray = data
+
+    fun read(): AccelerometerContainer {
+        return AccelerometerContainer(ThreeAxisWithAccuracy(Axis(data[0],data[1],data[2]),accuracy))
     }
 
 

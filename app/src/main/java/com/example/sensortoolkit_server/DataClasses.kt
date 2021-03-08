@@ -13,7 +13,7 @@ data class ThreeAxisWithAccuracy(var Data:Axis,var Accuracy:Int)
 
 @Keep
 @Serializable
-data class Accelerometer( val axis: ThreeAxisWithAccuracy, val Name:String="Accelerometer")
+data class AccelerometerContainer( val axis: ThreeAxisWithAccuracy, val Name:String="Accelerometer")
 
 @Keep
 @Serializable
