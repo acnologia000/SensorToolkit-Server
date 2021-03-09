@@ -36,9 +36,11 @@ class gAccelerometerAdapter():SensorEventListener {
         tost.invoke("sensor accuracy changed \n new value is $p1 ")
     }
 
-    fun read(): GyroScopeContainer {
-        return GyroScopeContainer(ThreeAxisWithAccuracy(Axis(data[0],data[1],data[2]),accuracy))
+    fun read(): AccelerometerContainer {
+        return AccelerometerContainer(ThreeAxisWithAccuracy(Axis(data[0],data[1],data[2]),accuracy))
     }
+
+    fun readRaw(): FloatArray { return data }
 
     fun kill() {return sensorManager.unregisterListener(this)}
 }
