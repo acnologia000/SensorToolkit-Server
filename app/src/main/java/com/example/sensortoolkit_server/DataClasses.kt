@@ -25,4 +25,14 @@ data class RotationVectorContainer(val axis: ThreeAxisWithAccuracy,val Name:Stri
 
 @Keep
 @Serializable
-data class AllSensors(val LinearAccelerometer:AccelerometerContainer)
+data class ProximitySensorContainer(val Distance:Float,val Name: String)
+
+@Keep
+@Serializable
+data class AllSensors(
+        val LinearAccelerometer:AccelerometerContainer,
+        val AcceleratorMeter:AccelerometerContainer,
+        val gAccelerometer:AccelerometerContainer,
+        val RotationVector:RotationVectorContainer,
+        val proximitySensor: ProximitySensorContainer,
+)
