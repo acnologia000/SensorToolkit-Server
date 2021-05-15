@@ -20,8 +20,8 @@ class ProximitySensorAdapter():Activity(),SensorEventListener {
     }
 
     override fun onSensorChanged(p0: SensorEvent?) {if (p0 != null) { data = p0.values }}
-
-
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) { accuracy = p1 }
 
+    fun readRaw():FloatArray {return data}
+    fun read():ProximitySensorContainer{return ProximitySensorContainer(data)}
 }

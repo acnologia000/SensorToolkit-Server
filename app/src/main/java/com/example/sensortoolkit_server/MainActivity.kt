@@ -15,7 +15,7 @@ import kotlin.concurrent.thread
 
 // Project status as of now ---
 
-/*
+/* * * *
  * Sensors Done are as follows with files
  * #LinearAccelerometer ( accelerometer what people usually expect
  * #Accelerometer ( accelerometer data with gravitation constant with whatever axis experiencing it )
@@ -83,8 +83,6 @@ class MainActivity : AppCompatActivity() {
 
             Log.e("reading","reading all data as text")
             // code stuck here
-
-
 
             val req = Scanner(inputStream).nextLine().split(" ").toTypedArray()
 

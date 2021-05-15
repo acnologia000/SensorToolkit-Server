@@ -25,7 +25,22 @@ data class RotationVectorContainer(val axis: ThreeAxisWithAccuracy,val Name:Stri
 
 @Keep
 @Serializable
-data class ProximitySensorContainer(val Distance:Float,val Name: String)
+data class ProximitySensorContainer(var Distance:FloatArray,val Name: String="proximitySensor") {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as ProximitySensorContainer
+
+        if (!Distance.contentEquals(other.Distance)) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return Distance.contentHashCode()
+    }
+}
 
 @Keep
 @Serializable
