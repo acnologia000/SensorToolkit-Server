@@ -1,3 +1,5 @@
+# The current repo is dead, the project will be soon back with jetpack compose as UI toolkit, link to new repo will be provided soon 
+
 # SensorToolkit-Server
 A HTTP(not exactly HTTP but a custom http like protocol) rest api server for serving sensor 
 data to micro controller boards with wireless capability or rather any device that can make
